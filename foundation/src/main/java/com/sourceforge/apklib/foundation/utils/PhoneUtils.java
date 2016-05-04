@@ -122,59 +122,6 @@ public class PhoneUtils {
     public static final long getApplicationMaxMemory() {
         return Runtime.getRuntime().maxMemory();
     }
-    /**
-     * 获取手机屏幕尺寸
-     */
-    @SuppressWarnings("deprecation")
-    public static final Point getScreenSize(Context ctx) {
-        WindowManager wm = (WindowManager) ctx.getSystemService(Context.WINDOW_SERVICE);
-        Point point = new Point();
-        point.set(wm.getDefaultDisplay().getWidth(), wm.getDefaultDisplay().getHeight());
-        return point;
-    }
-    /**
-     * 将px值转换为dip或dp值，保证尺寸大小不变
-     *
-     * @param pxValue
-     * @return
-     */
-    public static int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
-
-    /**
-     * 将dip或dp值转换为px值，保证尺寸大小不变
-     *
-     * @param dipValue
-     * @return
-     */
-    public static int dip2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
-    }
-
-    /**
-     * 将px值转换为sp值，保证文字大小不变
-     *
-     * @param pxValue DisplayMetrics类中属性scaledDensity）
-     * @return
-     */
-    public static int px2sp(Context context, float pxValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (pxValue / fontScale + 0.5f);
-    }
-
-    /**
-     * 将sp值转换为px值，保证文字大小不变
-     *
-     * @param spValue
-     * @return
-     */
-    public static int sp2px(Context context, float spValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * fontScale + 0.5f);
-    }
 
     /**
      * 判断网络是否可用
