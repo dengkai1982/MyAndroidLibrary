@@ -13,15 +13,15 @@ import com.sourceforge.apklib.foundation.utils.FilesystemUtils;
 import com.sourceforge.apklib.foundation.utils.PhoneUtils;
 
 /**
- * bitmap磁盘缓存
+ * 磁盘缓存
  *
  */
 public class DiskCache implements Cacher<String, InputStream> {
 	private DiskLruCache mCacher;
 	/**
-	 * 默认放到应用目录的imageCache目录下,版本迭代后删除缓存,大小100M
+	 * 默认放到应用目录的imageCache目录下,版本迭代后删除缓存,大小200M
 	 */
-	private static final long DISK_CACHE_SIZE=1024*1024*100;
+	private static final long DISK_CACHE_SIZE=1024*1024*200;
 	
 	private static final int DISK_CACHE_INDEX=0;
 	
