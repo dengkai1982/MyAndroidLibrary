@@ -26,8 +26,9 @@ public class HttpRequestStringCacher implements HttpRequestCacher{
 
     private Cacher cacher;
 
+    private String charset="utf-8";
     private static final String REQ_KEY_PREFIX="http_request_string_cacher_";
-
+    private static final String KEY_COOKIE="http_cookie_key_";
     private HttpResponse response;
 
     public HttpRequestStringCacher(Cacher cache){
@@ -47,20 +48,29 @@ public class HttpRequestStringCacher implements HttpRequestCacher{
 
     @Override
     public void storageCookies(String hostName, Set<HttpCookie> cookies) {
-
+        if(cacher!=null&&cookies!=null){
+           String cookiesString = HttpUtils.getCookiesString(cookies,charset);
+           cacher.storage(KEY_COOKIE+hostName,cookiesString);
+        }
     }
 
     @Override
     public Set<HttpCookie> getCookies(String hostName) {
+        if(cacher!=null){
+            String cookiesString =(String)cacher.recovery(KEY_COOKIE+hostName);
+            if(cookiesString!=null){
+               return HttpUtils.parseCookies(cookiesString);
+            }
+        }
         return null;
     }
 
     @Override
     public void storage(HttpRequest request,HttpResponse response) {
-        if(response.getRequestResult()!=null){
+        if(cacher!=null&&response.getRequestResult()!=null){
             String key= REQ_KEY_PREFIX+HttpUtils.buildRequestKey(request);
             String obj=(String)response.getRequestResult();
-            final String value= CoderUtils.androidBase64Encode(obj,"utf-8");
+            final String value= CoderUtils.androidBase64Encode(obj,charset);
             String saveJson=JsonBuilder.object2Json(response,new String[]{
                 "contentEncoding","mimeType","pageCharset","lastModified"
                     ,"request","requestResult"
@@ -97,7 +107,7 @@ public class HttpRequestStringCacher implements HttpRequestCacher{
                         get.setUrl(respJson.get("request").getString());
                         resp.setRequest(get);
                         String result=respJson.get("requestResult").getString();
-                        resp.setRequestResult(CoderUtils.androidBase64Decode(result,"utf-8"));
+                        resp.setRequestResult(CoderUtils.androidBase64Decode(result,charset));
                         response=resp;
                     }
                 } catch (JSONException e) {

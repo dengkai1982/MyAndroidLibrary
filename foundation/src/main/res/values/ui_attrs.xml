@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 波纹布局 RippleRLayout -->
+    <declare-styleable name="RippleLayout">
+        <attr name="rl_alpha" format="integer" />
+        <attr name="rl_framerate" format="integer"/>
+        <attr name="rl_rippleDuration" format="integer"/>
+        <attr name="rl_zoomDuration" format="integer" />
+        <attr name="rl_color" format="color" />
+        <attr name="rl_centered" format="boolean" />
+        <attr name="rl_type" format="enum">
+            <enum name="simpleRipple" value="0"/>
+            <enum name="doubleRipple" value="1"/>
+            <enum name="rectangle" value="2" />
+        </attr>
+        <attr name="rl_ripplePadding" format="dimension" />
+        <attr name="rl_zoom" format="boolean" />
+        <attr name="rl_zoomScale" format="float" />
+    </declare-styleable>
+</resources>

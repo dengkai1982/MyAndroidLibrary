@@ -65,9 +65,9 @@ public class ViewBinding {
                         try {
                             field.set(obj, view);
                         } catch (IllegalAccessException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                         } catch (IllegalArgumentException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                         }
                     }
                 }

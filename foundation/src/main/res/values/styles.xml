@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 移除掉toolbar的左边距 -->
+    <style name="no_padding_start_tool_bar" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item><!-- 设置该属性解决空白部分-->
+        <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
+    </style>
+</resources>

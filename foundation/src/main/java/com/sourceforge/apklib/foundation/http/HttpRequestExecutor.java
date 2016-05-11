@@ -1,4 +1,4 @@
-package com.sourceforge.apklib.foundation.executor;
+package com.sourceforge.apklib.foundation.http;
 
 import com.sourceforge.apklib.foundation.cache.HttpRequestCacher;
 import com.sourceforge.apklib.foundation.http.HttpMethod;
